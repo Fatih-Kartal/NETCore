@@ -1,8 +1,8 @@
 using Newtonsoft.Json;
 
-namespace NETCore_Web_Api
+namespace NETCore_Web_Api.Models
 {
-    public class Pair
+    public class PairTrade
     {
         [JsonProperty(PropertyName = "id")]
         public int Id { get; set; }

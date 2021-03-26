@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NETCore_Web_Api.Models;
 using NETCore_Web_Api.Services;
 using System.Collections.Generic;
 
 namespace NETCore_Web_Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TradeController : ControllerBase
     {
         private readonly ILogger<TradeController> _logger;
@@ -16,7 +17,10 @@ namespace NETCore_Web_Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public List<Pair> GetTrade(string symbol, int? limit = null) => TS.GetTrade(symbol, limit);
+        [HttpGet("GetTrade")]
+        public Pair GetTrade(string symbol = "BTC_USDT", int? limit = 10) => TS.GetTrade(symbol, limit);
+
+        [HttpGet("GetAllTokens")]
+        public List<Pair> GetAllTokens() => TS.GetAllTokens();
     }
 }
